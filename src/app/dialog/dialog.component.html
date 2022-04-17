@@ -1,0 +1,41 @@
+<h2 mat-dialog-title>Add Employee Form</h2>
+<div mat-dialog-content>
+  <form [formGroup]="employeeForm">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input formControlName="employeeFirstName" matInput placeholder="Enter the first name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="employeeLastName" matInput placeholder="Enter the last name">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Rank</mat-label>
+      <mat-select formControlName="employeeRank" placeholder="Select the rank">
+        <mat-option value="Senior">Senior</mat-option>
+        <mat-option value="Jenior">Jenior</mat-option>
+        <mat-option value="Leader">Leader</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Birth Date</mat-label>
+      <input formControlName="employeeBirthDate" matInput [matDatepicker]="picker" placeholder="Select a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Cell Phone</mat-label>
+      <input formControlName="employeePhoneNumber" matInput type="number"  placeholder="Enter the phone number">
+    </mat-form-field>
+    <h4>Section</h4>
+    <mat-radio-group formControlName="employeeSection" class="example-radio-group">
+      <mat-radio-button class="example-radio-button" *ngFor="let s of sections" [value]="s">
+        {{s}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </form>
+</div>
+<div mat-dialog-action [align]="'center'">
+  <button  mat-raised-button color="accent" mat-dialog-close>Cancel</button>
+  <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addEmployee()">{{actionBtn}}</button>
+</div>
